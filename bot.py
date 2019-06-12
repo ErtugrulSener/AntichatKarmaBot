@@ -184,8 +184,10 @@ class Bot:
                 self.message_counter += 1
                 if self.message_counter % 100 == 0:
                     threading.Thread(target=self.purchase_gift).start()
-                elif self.message_counter == 550:
-                    time.sleep(600)
+                elif self.message_counter % 3 == 0:
+                    self.proxy = next(self.proxy_pool)
+                # elif self.message_counter == 550:
+                #     time.sleep(600)
 
             else:
                 print(login_data.status_code, login_data.text)
@@ -201,7 +203,9 @@ class Bot:
                     if session_token:
                         self.retry = 0
 
-        time.sleep(14)
+                    time.sleep(5)
+
+                # time.sleep(random.randint(1, 3))
 
 
 if __name__ == "__main__":
