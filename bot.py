@@ -203,9 +203,7 @@ class Bot:
                     if session_token:
                         self.retry = 0
 
-                    time.sleep(5)
-
-                # time.sleep(random.randint(1, 3))
+                    time.sleep(15)
 
 
 if __name__ == "__main__":
